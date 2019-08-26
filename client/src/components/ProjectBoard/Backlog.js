@@ -9,23 +9,26 @@ class Backlog extends Component {
       <ProjectTask key={project_task.id} project_task={project_task} />
     ));
 
-    let todoItems = [];
-    let inProgressItems = [];
-    let doneItems = [];
+    const todoItems = tasks.filter((element)=>{
+      const {project_task} = element.props
+      if(project_task.status === 'TO_DO') 
+        return element
+      return null
+    })
 
-    for (let i = 0; i < tasks.length; i++) {
-      if (tasks[i].props.project_task.status === "TO_DO") {
-        todoItems.push(tasks[i]);
-      }
+    const inProgressItems = tasks.filter((element)=>{
+      const { project_task } = element.props
+      if(project_task.status === 'IN_PROGRESS')
+        return element
+      return null
+    })
 
-      if (tasks[i].props.project_task.status === "IN_PROGRESS") {
-        inProgressItems.push(tasks[i]);
-      }
-
-      if (tasks[i].props.project_task.status === "DONE") {
-        doneItems.push(tasks[i]);
-      }
-    }
+    const doneItems = tasks.filter((element)=> {
+      const {project_task} = element.props
+      if(project_task.status === 'DONE')
+        return element
+      return null
+    })
 
     return (
       <div className="container">

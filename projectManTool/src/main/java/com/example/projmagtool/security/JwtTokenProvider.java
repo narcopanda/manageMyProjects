@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.example.projmagtool.security.SecurityConstants.*;
-@Component
+@Component 
 public class JwtTokenProvider {
 
     public String generateToken(Authentication authentication){
